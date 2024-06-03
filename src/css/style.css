@@ -1,0 +1,396 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(grey, transparent 1px),
+  linear-gradient(90deg,grey, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.btn__container{
+  width: 88%;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+h1 {
+  color: #727272;
+}
+
+.add__btn-ticket {
+  background-color: #fff;
+  border: 2px solid #727272;
+  border-radius: 12px;
+  height: 50px;
+  min-width: 180px;
+
+  cursor: pointer;
+  color: #727272;
+  font-size: 18px;
+  padding: 8px 16px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+.ticket__container {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.ticket {
+  margin-bottom: 2px;
+  min-width: 80%;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  border: 1px solid #727272;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.ticket__show {
+  margin-bottom: 2px;
+  min-width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 250px;
+  border: 1px solid #727272;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.show__description {
+  margin-left: 5%;
+  display: none;
+}
+
+.show__description p {
+  margin-left: 6px;
+  width: 80%;
+}
+
+.ticket,
+.ticket__show, h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.ticket__checkbox {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  appearance: none;
+  border: 2px solid #727272;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  margin-right: 1%;
+}
+
+.ticket__checkbox::before {
+  content: '\2714';
+  font-size: 14px;
+  color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.ticket__checkbox:checked::before {
+  color: #727272;
+  display: block;
+}
+
+.body__ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  cursor: pointer;
+}
+
+.ticket span,
+.ticket__show span {
+  margin-left: 3%;
+  color: #727272;
+}
+
+.btns {
+  width: 4%;
+  margin-left: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.edit__Btn {
+  border: 2px solid #727272;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 8px;
+  color: #727272;
+  border-radius: 50%;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+.delete__Btn {
+  border: 2px solid #727272;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 5px;
+  padding: 8px;
+  color: #727272;
+  border-radius: 50%;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+/* Модельные окна */
+.ticket__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket__modal,
+.delete__modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid #727272;
+  width: 60%;
+  border-radius: 15px;
+}
+
+.modal__title {
+  margin: 0 auto;
+  margin-bottom: 25px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.ticket__name {
+  margin: 12px 0;
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.input__text {
+  outline: none;
+  font-size: 15px;
+  color: #727272;
+  border: 2px solid #727272;
+  height: 30px;
+}
+
+.ticket__description {
+  margin: 12px 0;
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.textarea__description {
+  outline: none;
+  color: #727272;
+  font-size: 18px;
+  border: 2px solid #727272;
+  height: 80px;
+}
+
+.btns__ticket {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.close__btn {
+  background-color: #fff;
+  border: 2px solid #727272;
+  border-radius: 12px;
+  height: 50px;
+  min-width: 120px;
+
+  cursor: pointer;
+  margin-right: 20px;
+  color: #727272;
+  font-size: 18px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+.confirm__Btn {
+  background-color: #fff;
+  border: 2px solid #727272;
+  border-radius: 12px;
+  height: 50px;
+  min-width: 80px;
+
+  cursor: pointer;
+  color: #727272;
+  font-size: 18px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+/* Модельное окно удаления */
+.delete__modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.delete__ticket {
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.delete__ticket-text {
+  margin-top: 35px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #727272;
+}
+
+.cancel__DeleteBtn {
+  background-color: #fff;
+  border: 2px solid #727272;
+  border-radius: 12px;
+  height: 50px;
+  min-width: 120px;
+
+  cursor: pointer;
+  margin-right: 20px;
+  color: #727272;
+  font-size: 18px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+.confirm__DeleteBtn {
+  background-color: #fff;
+  border: 2px solid #727272;
+  border-radius: 12px;
+  height: 50px;
+  min-width: 80px;
+
+  cursor: pointer;
+  color: #727272;
+  font-size: 18px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+/* Иконка загрузки */
+.loading__icon {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
